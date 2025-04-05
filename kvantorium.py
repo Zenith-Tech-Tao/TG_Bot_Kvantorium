@@ -1,7 +1,7 @@
 import telebot
 from telebot import types
 
-bot = telebot.TeleBot('7598275808:AAEz2pWxM6EcZjgd_BbjWcTcRHDNuEY7znk')  # Замените на ваш токен
+bot = telebot.TeleBot('Токен вашего телеграмм бота')  # Замените на ваш токен
 
 @bot.message_handler(commands=['start'])
 def start(message):
