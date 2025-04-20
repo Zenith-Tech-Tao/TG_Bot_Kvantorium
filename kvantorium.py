@@ -1,7 +1,7 @@
 import telebot
 from telebot import types
 
-bot = telebot.TeleBot('Токен вашего телеграмм бота')  # Замените на ваш токен
+bot = telebot.TeleBot('телеграм токен')  # Замените на ваш токен
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -18,7 +18,8 @@ def check(message):
     keyboard = types.InlineKeyboardMarkup()
     it_check = types.InlineKeyboardButton(text='Энерджи-квантум', callback_data='it_course')
     auto_check = types.InlineKeyboardButton(text='Био-квантум', callback_data='bio')
-    keyboard.add(it_check, auto_check)
+    nano_check = types.InlineKeyboardButton(text='Нано-квантум', callback_data='nano-kv')
+    keyboard.add(it_check, auto_check,nano_check )
 
     bot.send_message(message.chat.id, "Выберите курс:", reply_markup=keyboard)
 
@@ -59,77 +60,165 @@ def knopka(call):
         bot.send_message(call.message.chat.id, "Выберите группу био-квантум:", reply_markup=keyboard)
 
 
+
+
+    elif call.data == 'nano-kv':
+
+        keyboard = types.InlineKeyboardMarkup()
+        group1_button = types.InlineKeyboardButton(text='Группа Н5 сет. 35 школа', callback_data='group_n5')
+        group2_button = types.InlineKeyboardButton(text='Группа Н6 сет. 35 школа', callback_data='group_n6')
+        group3_button = types.InlineKeyboardButton(text='Группа Н2-С.', callback_data='group_n2')
+        group4_button = types.InlineKeyboardButton(text='Группа Н1-С.', callback_data='group_n1')
+        group5_button = types.InlineKeyboardButton(text='Группа Б6-Б.', callback_data='group_b6')
+        group6_button = types.InlineKeyboardButton(text='Группа Н3-Б.', callback_data='group_n3')
+        group7_button = types.InlineKeyboardButton(text='Группа Б7-С', callback_data='group_b7')
+        group8_button = types.InlineKeyboardButton(text='Группа Н4-П', callback_data='group_n4')
+
+        keyboard.add(group1_button, group2_button, group3_button, group4_button, group5_button, group6_button, group7_button, group8_button)
+        bot.send_message(call.message.chat.id, "Выберите группу нано-квантум:", reply_markup=keyboard)
+
+
+    elif call.data == 'group_n5':
+        bot.send_message(call.message.chat.id, "📅 Расписание группы Н5 сет. 35 школа\n"
+                                               "(О.А.)\n\n"
+                                               "📌Пятница\n"
+                                               "⏰ 8:00 - 11:00\n\n"
+                                               "📌 Суббота\n"
+                                               "⏰ 8:00- 11:00")
+
+
+    elif call.data == 'group_n6':
+        bot.send_message(call.message.chat.id, "📅 Расписание группы Н6 сет. 35 школа\n"
+                                               "(О.А.)\n\n"
+                                               "📌Пятница\n"
+                                               "⏰ 11:00 - 14:00\n\n"
+                                               "📌 Суббота\n"
+                                               "⏰ 11:00 - 14:00")
+
+
+    elif call.data == 'group_n2':
+        bot.send_message(call.message.chat.id, "📅 Расписание группы Н2-C\n"
+                                               "12-14 лет (О.А.)\n\n"
+                                               "📌Четверг\n"
+                                               "⏰ 15:00 - 16:30\n\n"
+                                               "📌 Суббота\n"
+                                               "⏰ 16:30 - 18:00")
+
+    elif call.data == 'group_n1':
+        bot.send_message(call.message.chat.id, "📅 Расписание группы Н1-С.\n"
+                                               "12-14 лет (О.А.)\n\n"
+                                               "📌Пятница\n"
+                                               "⏰ 15:00 - 16:30\n\n"
+                                               "📌 Суббота\n"
+                                               "⏰ 15:00 - 16:30")
+
+
+    elif call.data == 'group_b6':
+        bot.send_message(call.message.chat.id, "📅 Расписание группы Б6-Б.\n"
+                                               "14-17 лет (Д.И.)\n\n"
+                                               "📌Среда\n"
+                                               "⏰ 16:30 - 18:00\n\n")
+
+
+    elif call.data == 'group_n3':
+        bot.send_message(call.message.chat.id, "📅 Расписание группы Н3-Б.\n"
+                                               "14-15 лет (О.А.)\n\n"
+                                               "📌Четверг\n"
+                                               "⏰ 16:30 - 18:00\n\n"
+                                               "📌 Пятница\n"
+                                               "⏰ 16:30 - 18:00")
+
+    elif call.data == 'group_b7':
+        bot.send_message(call.message.chat.id, "📅 Расписание группы Б7-C.\n"
+                                               "14-17 лет (Д.И.)\n\n"
+                                               "📌Среда\n"
+                                               "⏰ 18:00 - 19:30\n\n")
+
+
+    elif call.data == 'group_n4':
+        bot.send_message(call.message.chat.id, "📅 Расписание группы Н4-П\n"
+                                               "15 - 16 лет (О.А.)\n\n"
+                                               "📌Четверг\n"
+                                               "⏰ 18:00 - 19:30\n\n"
+                                               "📌 Пятница\n"
+                                               "⏰ 18:00 - 19:30")
+
     elif call.data == 'group_AV9':
-        bot.send_message(call.message.chat.id, "Вы выбрали Группу: AB9.\n"
-                                               "\n"
-                                               "Преподователь: (А.А). \n"
-                                               "\n"
-                                               "Рассписание: Вторник, Среда (15:00 -16:30)")
+        bot.send_message(call.message.chat.id, "📅 Расписание группы АВ9-С\n"
+                                               "13-17 лет (А.А.)\n\n"
+                                               "📌Вторник\n"
+                                               "⏰ 15:00 - 16:30\n\n"
+                                               "📌 Среда\n"
+                                               "⏰ 15:00 - 16:30")
 
 
     elif call.data == 'group_AV10':
-        bot.send_message(call.message.chat.id, "Вы выбрали Группу: AB10.\n"
-                                               "\n"
-                                               "Преподователь: (А.А). \n"
-                                               "\n"
-                                               "Рассписание: Пятница, Суббота (15:00 - 16:30)")
+        bot.send_message(call.message.chat.id, "📅 Расписание группы АВ10-С\n"
+                                               "13-17 лет (А.А.)\n\n"
+                                               "📌Пятница\n"
+                                               "⏰ 15:00 - 16:30\n\n"
+                                               "📌 Суббота\n"
+                                               "⏰ 15:00 - 16:30")
 
     elif call.data == 'group_AV11':
-        bot.send_message(call.message.chat.id, "Вы выбрали Группу: AB11.\n"
-                                               "\n"
-                                               "Преподователь: (А.А). \n"
-                                               "\n"
-                                               "Рассписание: Пятница, Суббота (16:30 - 18:00)")
+        bot.send_message(call.message.chat.id, "📅 Расписание группы АВ11-С\n"
+                                               "14-17 лет (А.А.)\n\n"
+                                               "📌Пятница\n"
+                                               "⏰ 16:30 - 18:00\n\n"
+                                               "📌 Суббота\n"
+                                               "⏰ 16:30 - 18:00")
 
 
     elif call.data == 'group_AV12':
-        bot.send_message(call.message.chat.id, "Вы выбрали Группу: АВ12.\n"
-                                               "\n"
-                                               "Преподователь: (А.А). \n"
-                                               "\n"
-                                               "Рассписание: Пятница, Суббота (18:00 - 19:30)")
+        bot.send_message(call.message.chat.id, "📅 Расписание группы АВ12-С\n"
+                                               "14-17 лет (А.А.)\n\n"
+                                               "📌Пятница\n"
+                                               "⏰ 18:00 - 19:30\n\n"
+                                               "📌 Суббота\n"
+                                               "⏰ 18:00 - 19:30")
 
     elif call.data == 'group_oi13':
-        bot.send_message(call.message.chat.id, "Вы выбрали Группу: ОИ13'.\n"
-                                               "\n"
-                                               "Преподователь: (В.Л.). \n"
-                                               "\n"
-                                               "Рассписание: Вторник, Четверг (9:30 - 11:00)")
+        bot.send_message(call.message.chat.id, "📅 Расписание группы ОИ13-С\n"
+                                               "8-10 лет (В.Л.)\n\n"
+                                               "📌Вторник\n"
+                                               "⏰ 9:30 - 11:00\n\n"
+                                               "📌 Четверг\n"
+                                               "⏰ 9:30 - 11:00")
 
     elif call.data == 'group_AV19':
-        bot.send_message(call.message.chat.id, "Вы выбрали Группу: АВ19'.\n"
-                                               "\n"
-                                               "Преподователь: (Тополево). \n"
-                                               "\n"
-                                               "Рассписание: Суббота (11:00 - 12:30)")
+        bot.send_message(call.message.chat.id, "📅 Расписание группы АВ19-С\n"
+                                               "НЕИЗВЕСТНО лет (А.А.)\n\n"
+                                               "📌Суббота\n"
+                                               "⏰ 11:00 - 12:30\n\n")
 
 
 
     elif call.data == 'group_DH3':
-        bot.send_message(call.message.chat.id, "Вы выбрали Группу: ДШ3'.\n"
-                                               "\n"
-                                               "Преподователь: (Л.Г). \n"
-                                               "\n"
-                                               "Рассписание: Вторник, Четверг (16:30 - 18:00)")
+        bot.send_message(call.message.chat.id, "📅 Расписание группы ДШ3-С\n"
+                                               "6-7 лет (Л.Г.)\n\n"
+                                               "📌Вторник\n"
+                                               "⏰ 16:30 - 18:00\n\n"
+                                               "📌 Четверг\n"
+                                               "⏰ 16:30 - 18:00")
 
 
     elif call.data == 'group_DH2':
-        bot.send_message(call.message.chat.id, "Вы выбрали Группу: ДШ2'.\n"
-                                               "\n"
-                                               "Преподователь: (Л.Г). \n"
-                                               "\n"
-                                               "Рассписание: Вторник, Четверг (18:00 - 19:30)")
+        bot.send_message(call.message.chat.id, "📅 Расписание группы ДШ2-С\n"
+                                               "5-6 лет (Л.Г.)\n\n"
+                                               "📌Вторник\n"
+                                               "⏰ 18:00 - 19:30\n\n"
+                                               "📌 Четверг\n"
+                                               "⏰ 18:00 - 19:30")
 
 
 
     elif call.data == 'Dis':
-        bot.send_message(call.message.chat.id, "Вы выбрали Группу: Цифровой дизайн'.\n"
-                                               "\n"
-                                               "Преподователь: Неизвестно. \n"
-                                               "\n"
-                                               "Рассписание: Понедельник, Среда (18:00 - 19:30)")
-
-
+        bot.send_message(call.message.chat.id, "📅 Расписание группы Цифровой дизайн\n"
+                                               "НЕИЗВЕСТНО лет (НЕИЗВЕСТНО )\n\n"
+                                               "📌Понедельник\n"
+                                               "⏰ 18:00 - 19:30\n\n"
+                                               "📌 Среда\n"
+                                               "⏰ 18:00 - 19:30")
 
 
 
@@ -201,8 +290,6 @@ def knopka(call):
 
 
 
-
-
 @bot.message_handler(commands=['info'])
 def info(message):
     bot.send_message(message.chat.id, "Кванториум – федеральная сеть детских технопарков. \n\n"
@@ -247,4 +334,4 @@ def help_message(message):
 bot.polling(none_stop=True)
 
 #код от ZTTao (Zenith Tech TAO)
-# Версия: 1.3.2
+# Версия: 1.3.4
