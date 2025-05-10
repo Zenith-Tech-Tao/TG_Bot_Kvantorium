@@ -5,7 +5,7 @@ from telebot import types
 TOKEN = os.getenv("TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
-bot = telebot.TeleBot('телеграм токен')  # Замените на ваш токен
+bot = telebot.TeleBot('7598275808:AAEz2pWxM6EcZjgd_BbjWcTcRHDNuEY7znk')
 
 @bot.message_handler(commands=['start'])
 def start(message):
