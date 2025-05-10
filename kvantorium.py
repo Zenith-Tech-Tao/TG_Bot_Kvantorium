@@ -1,5 +1,11 @@
+import os
 import telebot
 from telebot import types
+
+TOKEN = os.getenv("TOKEN")
+bot = telebot.TeleBot(TOKEN)
+
+bot.infinity_polling()
 
 bot = telebot.TeleBot('телеграм токен')  # Замените на ваш токен
 
