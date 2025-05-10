@@ -5,8 +5,6 @@ from telebot import types
 TOKEN = os.getenv("TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
-bot = telebot.TeleBot('7598275808:AAEz2pWxM6EcZjgd_BbjWcTcRHDNuEY7znk')
-
 @bot.message_handler(commands=['start'])
 def start(message):
     bot.send_message(message.chat.id, "👋 Добро пожаловать в Кванториум!\n   \n"
