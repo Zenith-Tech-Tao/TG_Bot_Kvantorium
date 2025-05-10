@@ -5,8 +5,6 @@ from telebot import types
 TOKEN = os.getenv("TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
-bot.infinity_polling()
-
 bot = telebot.TeleBot('телеграм токен')  # Замените на ваш токен
 
 @bot.message_handler(commands=['start'])
@@ -337,7 +335,7 @@ def help_message(message):
                      "/info - Узнать больше о Кванториуме\n"
                      "/help - Получить помощь по использованию бота")
 
-bot.polling(none_stop=True)
+bot.infinity_polling()
 
 #код от ZTTao (Zenith Tech TAO)
 # Версия: 1.3.4
